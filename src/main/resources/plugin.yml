@@ -1,0 +1,19 @@
+name: ForWhenTheBellTolls
+version: '${project.version}'
+main: com.rtzen.belltoll.BellTollPlugin
+api-version: '1.21'
+description: Announces real-world time to players at configurable intervals, like a church bell.
+author: rt-zen
+
+commands:
+  belltoll:
+    description: ForWhenTheBellTolls plugin commands.
+    usage: /<command> <reload|ring [chat|actionbar|title]>
+
+permissions:
+  belltoll.reload:
+    description: Allows reloading the plugin configuration.
+    default: op
+  belltoll.ring:
+    description: Allows manually triggering a time announcement.
+    default: op

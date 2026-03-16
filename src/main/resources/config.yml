@@ -1,0 +1,30 @@
+# For When the Bell Tolls – Configuration
+# https://github.com/rt-zen/mc-belltoll-plugin
+
+# Timezone used for the real-world clock.
+# Use standard Java timezone IDs, e.g. Europe/Lisbon, America/New_York, UTC.
+timezone: "GMT"
+
+# How often (in minutes) the bell tolls.
+# Must be a divisor of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, or 60.
+interval-minutes: 15
+
+# Java DateTimeFormatter pattern for the displayed time.
+# See: https://docs.oracle.com/en/java/docs/api/java.base/java/time/format/DateTimeFormatter.html
+time-format: "HH:mm"
+
+# Where the message is displayed.
+# Options: CHAT, ACTIONBAR, TITLE
+display-mode: ACTIONBAR
+
+# Message template. Supports MiniMessage formatting.
+# %time% is replaced with the current formatted time.
+# MiniMessage reference: https://docs.advntr.dev/minimessage/format.html
+message: "<gold>\uD83D\uDD14 The church bell rings! <yellow>%time%</yellow></gold>"
+
+# Title display settings (only used when display-mode is TITLE).
+# All values are in ticks (20 ticks = 1 second).
+title:
+  fade-in: 10
+  stay: 60
+  fade-out: 10
