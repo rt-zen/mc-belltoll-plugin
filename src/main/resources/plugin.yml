@@ -8,7 +8,7 @@ author: rt-zen
 commands:
   belltoll:
     description: ForWhenTheBellTolls plugin commands.
-    usage: /<command> <reload|ring [chat|actionbar|title]>
+    usage: /<command> <reload | ring [chat|actionbar|title] | prefs [mode|interval|timezone|audio]>
 
 permissions:
   belltoll.reload:
@@ -17,3 +17,6 @@ permissions:
   belltoll.ring:
     description: Allows manually triggering a time announcement.
     default: op
+  belltoll.prefs:
+    description: Allows managing personal notification preferences.
+    default: true

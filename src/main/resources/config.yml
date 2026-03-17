@@ -28,3 +28,25 @@ title:
   fade-in: 10
   stay: 60
   fade-out: 10
+
+# Sound played when the bell tolls for players in FULL notification mode.
+# Use Bukkit Sound enum names (uppercase). Common options:
+#   BLOCK_BELL_USE          – standard Minecraft bell
+#   BLOCK_NOTE_BLOCK_BELL   – note block bell pitch
+#   UI_TOAST_CHALLENGE_COMPLETE – fanfare
+sound:
+  name: "BLOCK_BELL_USE"
+  volume: 1.0
+  pitch: 1.0
+
+# Which minute-of-hour values trigger the audio notification (0–59).
+# An empty list ( [] ) plays audio at every scheduled interval.
+# Example: [0, 30] rings audibly only at the full hour and half hour.
+audio-minutes: [0, 30]
+
+# Default notification mode for players who have not set their own preference.
+# Options:
+#   FULL     – text + audio notification
+#   STEALTH  – text only, no sound
+#   DISABLED – completely silent for that player
+default-notification-mode: FULL

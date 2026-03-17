@@ -1,5 +1,7 @@
 package com.rtzen.belltoll;
 
+import java.util.logging.Logger;
+
 public enum DisplayMode {
     CHAT,
     ACTIONBAR,
@@ -14,6 +16,8 @@ public enum DisplayMode {
         try {
             return DisplayMode.valueOf(value.toUpperCase());
         } catch (IllegalArgumentException e) {
+            Logger.getLogger("ForWhenTheBellTolls").warning(
+                    "Unknown display-mode value '" + value + "', falling back to CHAT.");
             return CHAT;
         }
     }

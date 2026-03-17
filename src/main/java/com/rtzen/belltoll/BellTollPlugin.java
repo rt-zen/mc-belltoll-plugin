@@ -8,16 +8,18 @@ public final class BellTollPlugin extends JavaPlugin {
     private ClockConfig clockConfig;
     private ClockTask clockTask;
     private BukkitTask scheduledTask;
+    private PlayerPreferencesManager preferencesManager;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
         clockConfig = new ClockConfig(this);
-        clockTask = new ClockTask(clockConfig);
+        preferencesManager = new PlayerPreferencesManager(this);
+        clockTask = new ClockTask(clockConfig, preferencesManager);
         scheduledTask = getServer().getScheduler().runTaskTimer(this, clockTask, 0L, 20L);
 
-        BellTollCommand commandHandler = new BellTollCommand(this);
+        BellTollCommand commandHandler = new BellTollCommand(this, preferencesManager);
         var cmd = getCommand("belltoll");
         if (cmd != null) {
             cmd.setExecutor(commandHandler);
@@ -26,13 +28,17 @@ public final class BellTollPlugin extends JavaPlugin {
 
         getLogger().info("Enabled. Interval: " + clockConfig.getIntervalMinutes()
                 + " min | Timezone: " + clockConfig.getTimezone()
-                + " | Display: " + clockConfig.getDisplayMode());
+                + " | Display: " + clockConfig.getDisplayMode()
+                + " | Default mode: " + clockConfig.getDefaultNotificationMode());
     }
 
     @Override
     public void onDisable() {
         if (scheduledTask != null) {
             scheduledTask.cancel();
+        }
+        if (preferencesManager != null) {
+            preferencesManager.save();
         }
         getLogger().info("Disabled.");
     }
@@ -46,5 +52,9 @@ public final class BellTollPlugin extends JavaPlugin {
 
     public ClockTask getClockTask() {
         return clockTask;
+    }
+
+    public ClockConfig getClockConfig() {
+        return clockConfig;
     }
 }
